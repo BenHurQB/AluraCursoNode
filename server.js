@@ -1,20 +1,13 @@
-const http = require("http")
-const port = 3000;
 
-const rotas = {
-    '/': 'Curso de Node',
-    '/livros': 'Entrei na pag de Livros',
-    '/autores': 'Listagem de autores',
-    '/editora': 'Pag de editora',
-    '/sobre': 'Info sobre o projeto'
-}
 
-const server = http.createServer((req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/plain'})
-    res.end(rotas[req.url]);
-})
+import app from './src/app.js'
+const port = process.env.port || 3000;
 
-server.listen(port, () => {
+// listen é utilizado em servidores HTTP para escutar as requisições vindas de um determinado endereço de IP e porta
+// port indica a porta onde o servidor deve escutar as requisições e o segundo paramentro é uma função callback
+// que é executada qdo o servidor começa a escutar as requisições.
+// O servidor esta escutando na porta especificada pela variavel port.
+
+app.listen(port, () => {
     console.log(`Servidor escutando em http://localhost:${port}`)
 })
-
